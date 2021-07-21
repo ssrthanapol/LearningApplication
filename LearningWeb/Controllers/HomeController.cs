@@ -13,7 +13,7 @@ namespace LearningWeb.Controllers
         {
             using (Entities db = new Entities())
             {
-                
+                var test = db.STUDENTs.FirstOrDefault();
             }
             return View();
         }
