@@ -13,7 +13,7 @@ namespace LearningWeb.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities : DbContext, IDbContext
     {
         public Entities()
             : base("name=AppConnection")

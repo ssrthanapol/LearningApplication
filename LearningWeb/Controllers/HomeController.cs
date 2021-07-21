@@ -9,12 +9,17 @@ namespace LearningWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private EFUnitOfWork unitOfWork;
+
+        public HomeController()
+        {
+            unitOfWork = new EFUnitOfWork();
+        }
+
         public ActionResult Index()
         {
-            using (Entities db = new Entities())
-            {
-                var test = db.STUDENTs.FirstOrDefault();
-            }
+            var testall = unitOfWork.GetRepository<STUDENT>().GetAll();
+            var testsingle = unitOfWork.GetRepository<STUDENT>().GetByID(1);
             return View();
         }
 

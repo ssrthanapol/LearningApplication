@@ -130,9 +130,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\Interface\IDbContext.cs" />
+    <Compile Include="Data\Interface\IRepository.cs" />
+    <Compile Include="Data\Repository\EFGenericRepository.cs" />
+    <Compile Include="Data\UnitOfWork\EFUnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Data\Interface\IUnitOfWork.cs" />
     <Compile Include="Models\DAO.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
