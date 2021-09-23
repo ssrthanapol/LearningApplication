@@ -4,7 +4,43 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LearningWeb.DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LearningWeb.DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOT">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MID_ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MID_ID" Type="int" Nullable="false" />
+          <Property Name="TOP_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BOT_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MID_ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MID_ID" Type="int" Nullable="false" />
+          <Property Name="TOP_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MID">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TOP_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MID_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOP_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ROOM">
           <Key>
             <PropertyRef Name="Room_ID" />
@@ -16,7 +52,7 @@
           <Key>
             <PropertyRef Name="Student_ID" />
           </Key>
-          <Property Name="Student_ID" Type="int" Nullable="false" />
+          <Property Name="Student_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Student_FirstName" Type="nvarchar" MaxLength="255" />
           <Property Name="Student_LastName" Type="nvarchar" MaxLength="255" />
         </EntityType>
@@ -27,6 +63,18 @@
           <Property Name="Teacher_ID" Type="int" Nullable="false" />
           <Property Name="Teacher_FirstName" Type="nvarchar" MaxLength="255" />
           <Property Name="Teacher_LastName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TOP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOP_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_ROOM_TEACHER">
           <End Role="TEACHER" Type="Self.TEACHER" Multiplicity="1" />
@@ -41,32 +89,88 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LearningWebDBModelStoreContainer">
+          <EntitySet Name="BOT" EntityType="Self.BOT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOT_TEST" EntityType="Self.BOT_TEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MID" EntityType="Self.MID" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MID_TEST" EntityType="Self.MID_TEST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEACHER" EntityType="Self.TEACHER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOP" EntityType="Self.TOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOP_TEST" EntityType="Self.TOP_TEST" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ROOM_TEACHER" Association="Self.FK_ROOM_TEACHER">
             <End Role="TEACHER" EntitySet="TEACHER" />
             <End Role="ROOM" EntitySet="ROOM" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LearningWeb.DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOTs" EntityType="LearningWeb.DBModel.BOT" />
+          <EntitySet Name="BOT_TEST" EntityType="LearningWeb.DBModel.BOT_TEST" />
+          <EntitySet Name="MIDs" EntityType="LearningWeb.DBModel.MID" />
+          <EntitySet Name="MID_TEST" EntityType="LearningWeb.DBModel.MID_TEST" />
+          <EntitySet Name="ROOMs" EntityType="LearningWeb.DBModel.ROOM" />
+          <EntitySet Name="STUDENTs" EntityType="LearningWeb.DBModel.STUDENT" />
+          <EntitySet Name="TEACHERs" EntityType="LearningWeb.DBModel.TEACHER" />
+          <EntitySet Name="TOPs" EntityType="LearningWeb.DBModel.TOP" />
+          <EntitySet Name="TOP_TEST" EntityType="LearningWeb.DBModel.TOP_TEST" />
+          <AssociationSet Name="FK_ROOM_TEACHER" Association="LearningWeb.DBModel.FK_ROOM_TEACHER">
+            <End Role="TEACHER" EntitySet="TEACHERs" />
+            <End Role="ROOM" EntitySet="ROOMs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BOT">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MID_ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MID_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOP_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BOT_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MID_ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MID_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOP_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MID">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TOP_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MID_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TOP_ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOP_ID" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="ROOM">
           <Key>
             <PropertyRef Name="Room_ID" />
           </Key>
           <Property Name="Room_ID" Type="Int32" Nullable="false" />
           <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TEACHER" Relationship="Self.FK_ROOM_TEACHER" FromRole="ROOM" ToRole="TEACHER" />
+          <NavigationProperty Name="TEACHER" Relationship="LearningWeb.DBModel.FK_ROOM_TEACHER" FromRole="ROOM" ToRole="TEACHER" />
         </EntityType>
         <EntityType Name="STUDENT">
           <Key>
             <PropertyRef Name="Student_ID" />
           </Key>
-          <Property Name="Student_ID" Type="Int32" Nullable="false" />
+          <Property Name="Student_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Student_FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Student_LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -77,11 +181,23 @@
           <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
           <Property Name="Teacher_FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Teacher_LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ROOMs" Relationship="Self.FK_ROOM_TEACHER" FromRole="TEACHER" ToRole="ROOM" />
+          <NavigationProperty Name="ROOMs" Relationship="LearningWeb.DBModel.FK_ROOM_TEACHER" FromRole="TEACHER" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="TOP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="TOP_TEST">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_ROOM_TEACHER">
-          <End Role="TEACHER" Type="Self.TEACHER" Multiplicity="1" />
-          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+          <End Type="LearningWeb.DBModel.TEACHER" Role="TEACHER" Multiplicity="1" />
+          <End Type="LearningWeb.DBModel.ROOM" Role="ROOM" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TEACHER">
               <PropertyRef Name="Teacher_ID" />
@@ -91,44 +207,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
-          <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
-          <EntitySet Name="TEACHERs" EntityType="Self.TEACHER" />
-          <AssociationSet Name="FK_ROOM_TEACHER" Association="Self.FK_ROOM_TEACHER">
-            <End Role="TEACHER" EntitySet="TEACHERs" />
-            <End Role="ROOM" EntitySet="ROOMs" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LearningWebDBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BOTs">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.BOT">
+              <MappingFragment StoreEntitySet="BOT">
+                <ScalarProperty Name="TOP_ID" ColumnName="TOP_ID" />
+                <ScalarProperty Name="MID_ID" ColumnName="MID_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOT_TEST">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.BOT_TEST">
+              <MappingFragment StoreEntitySet="BOT_TEST">
+                <ScalarProperty Name="TOP_ID" ColumnName="TOP_ID" />
+                <ScalarProperty Name="MID_ID" ColumnName="MID_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MIDs">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.MID">
+              <MappingFragment StoreEntitySet="MID">
+                <ScalarProperty Name="TOP_ID" ColumnName="TOP_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MID_TEST">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.MID_TEST">
+              <MappingFragment StoreEntitySet="MID_TEST">
+                <ScalarProperty Name="TOP_ID" ColumnName="TOP_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ROOMs">
             <EntityTypeMapping TypeName="LearningWeb.DBModel.ROOM">
               <MappingFragment StoreEntitySet="ROOM">
-                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
                 <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+                <ScalarProperty Name="Room_ID" ColumnName="Room_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STUDENTs">
             <EntityTypeMapping TypeName="LearningWeb.DBModel.STUDENT">
               <MappingFragment StoreEntitySet="STUDENT">
-                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
-                <ScalarProperty Name="Student_FirstName" ColumnName="Student_FirstName" />
                 <ScalarProperty Name="Student_LastName" ColumnName="Student_LastName" />
+                <ScalarProperty Name="Student_FirstName" ColumnName="Student_FirstName" />
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TEACHERs">
             <EntityTypeMapping TypeName="LearningWeb.DBModel.TEACHER">
               <MappingFragment StoreEntitySet="TEACHER">
-                <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
-                <ScalarProperty Name="Teacher_FirstName" ColumnName="Teacher_FirstName" />
                 <ScalarProperty Name="Teacher_LastName" ColumnName="Teacher_LastName" />
+                <ScalarProperty Name="Teacher_FirstName" ColumnName="Teacher_FirstName" />
+                <ScalarProperty Name="Teacher_ID" ColumnName="Teacher_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOPs">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.TOP">
+              <MappingFragment StoreEntitySet="TOP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOP_TEST">
+            <EntityTypeMapping TypeName="LearningWeb.DBModel.TOP_TEST">
+              <MappingFragment StoreEntitySet="TOP_TEST">
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

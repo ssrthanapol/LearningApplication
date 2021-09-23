@@ -138,6 +138,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Data\Interface\IUnitOfWork.cs" />
+    <Compile Include="Models\BOT.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BOT_TEST.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAO.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +159,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DAO.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MID.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MID_TEST.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ROOM.cs">
       <DependentUpon>DAO.tt</DependentUpon>
     </Compile>
@@ -160,6 +172,12 @@
       <DependentUpon>DAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TEACHER.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TOP.cs">
+      <DependentUpon>DAO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TOP_TEST.cs">
       <DependentUpon>DAO.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

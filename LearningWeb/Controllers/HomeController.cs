@@ -9,10 +9,12 @@ namespace LearningWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private Entities context;
         private EFUnitOfWork unitOfWork;
 
         public HomeController()
         {
+            context = new Entities();
             unitOfWork = new EFUnitOfWork();
         }
 
@@ -20,6 +22,9 @@ namespace LearningWeb.Controllers
         {
             var testall = unitOfWork.GetRepository<STUDENT>().GetAll();
             var testsingle = unitOfWork.GetRepository<STUDENT>().GetByID(1);
+
+            var testall_context = context.STUDENTs.ToList();
+            var testsingle_context = context.STUDENTs.FirstOrDefault(s => s.Student_ID == 1);
             return View();
         }
 

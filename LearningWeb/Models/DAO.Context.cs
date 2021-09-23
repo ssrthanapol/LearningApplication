@@ -16,7 +16,7 @@ namespace LearningWeb.Models
     public partial class Entities : DbContext, IDbContext
     {
         public Entities()
-            : base("name=AppConnection")
+            : base("name=Entities")
         {
         }
     
@@ -25,8 +25,14 @@ namespace LearningWeb.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BOT> BOTs { get; set; }
+        public virtual DbSet<BOT_TEST> BOT_TEST { get; set; }
+        public virtual DbSet<MID> MIDs { get; set; }
+        public virtual DbSet<MID_TEST> MID_TEST { get; set; }
         public virtual DbSet<ROOM> ROOMs { get; set; }
         public virtual DbSet<STUDENT> STUDENTs { get; set; }
         public virtual DbSet<TEACHER> TEACHERs { get; set; }
+        public virtual DbSet<TOP> TOPs { get; set; }
+        public virtual DbSet<TOP_TEST> TOP_TEST { get; set; }
     }
 }
