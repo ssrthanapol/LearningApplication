@@ -11,7 +11,7 @@
             <PropertyRef Name="MID_ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MID_ID" Type="int" Nullable="false" />
           <Property Name="TOP_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -21,7 +21,7 @@
             <PropertyRef Name="MID_ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MID_ID" Type="int" Nullable="false" />
           <Property Name="TOP_ID" Type="int" Nullable="false" />
         </EntityType>
@@ -30,7 +30,7 @@
             <PropertyRef Name="ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TOP_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MID_TEST">
@@ -128,7 +128,7 @@
             <PropertyRef Name="MID_ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MID_ID" Type="Int32" Nullable="false" />
           <Property Name="TOP_ID" Type="Int32" Nullable="false" />
         </EntityType>
@@ -138,7 +138,7 @@
             <PropertyRef Name="MID_ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MID_ID" Type="Int32" Nullable="false" />
           <Property Name="TOP_ID" Type="Int32" Nullable="false" />
         </EntityType>
@@ -147,7 +147,7 @@
             <PropertyRef Name="ID" />
             <PropertyRef Name="TOP_ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TOP_ID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="MID_TEST">

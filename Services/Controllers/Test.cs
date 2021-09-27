@@ -67,22 +67,24 @@ namespace Services.Controllers
                         TOP_TEST top = new TOP_TEST();
                         //top.ID = t.ID;
                         context.TOP_TEST.Add(top);
+                        context.SaveChanges();
 
                         var midlist = context.MIDs.Where(w => w.TOP_ID == t.ID).ToList();
                         foreach (var m in midlist)
                         {
                             MID_TEST mid = new MID_TEST();
                             //mid.ID = m.ID;
-                            mid.TOP_ID = top.ID; //can ?
+                            mid.TOP_ID = top.ID;
                             context.MID_TEST.Add(mid);
+                            context.SaveChanges();
 
-                            var botlist = context.BOTs.Where(w => w.MID_ID == m.ID).ToList();
+                            var botlist = context.BOTs.Where(w => w.TOP_ID == t.ID && w.MID_ID == m.ID).ToList();
                             foreach (var b in botlist)
                             {
                                 BOT_TEST bot = new BOT_TEST();
-                                bot.ID = b.ID;
-                                bot.MID_ID = mid.ID; //can ?
-                                bot.TOP_ID = top.ID; //can ?
+                                //bot.ID = b.ID;
+                                bot.MID_ID = mid.ID;
+                                bot.TOP_ID = top.ID;
                                 context.BOT_TEST.Add(bot);
                                 context.SaveChanges();
                             }
@@ -102,22 +104,55 @@ namespace Services.Controllers
             }
         }
 
-        public async Task TestFunction2()
-        {
-            using (var context = new Entities().Database.BeginTransaction())
-            {
-                try
-                {
-                    Console.WriteLine("");
-                    context.Commit();
-                }
-                catch (Exception ex)
-                {
-                    context.Rollback();
-                    Console.WriteLine(ex);
-                    Console.ReadKey();
-                }
-            }
-        }
+        //public async Task TestFunction2()
+        //{
+        //    var context = new Entities();
+        //    using (var tran = context.Database.BeginTransaction())
+        //    {
+        //        try
+        //        {
+        //            Console.WriteLine("start");
+        //            var toplist = context.TOPs.ToList();
+        //            foreach (var t in toplist)
+        //            {
+        //                TOP_TEST top = new TOP_TEST();
+        //                //top.ID = t.ID;
+        //                context.TOP_TEST.Add(top);
+        //                context.SaveChanges();
+
+        //                var midlist = context.MIDs.Where(w => w.TOP_ID == t.ID).ToList();
+        //                foreach (var m in midlist)
+        //                {
+        //                    MID_TEST mid = new MID_TEST();
+        //                    //mid.ID = m.ID;
+        //                    mid.TOP_ID = top.ID;
+        //                    context.MID_TEST.Add(mid);
+        //                    context.SaveChanges();
+
+        //                    var botlist = context.BOTs.Where(w => w.TOP_ID == t.ID && w.MID_ID == m.ID).ToList();
+        //                    foreach (var b in botlist)
+        //                    {
+        //                        BOT_TEST bot = new BOT_TEST();
+        //                        //bot.ID = b.ID;
+        //                        bot.MID_ID = mid.ID;
+        //                        bot.TOP_ID = top.ID;
+        //                        context.BOT_TEST.Add(bot);
+        //                        context.SaveChanges();
+        //                    }
+        //                }
+        //            }
+        //            context.SaveChanges();
+        //            tran.Commit();
+        //            Console.WriteLine("complete");
+        //            Console.ReadKey();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            tran.Rollback();
+        //            Console.WriteLine(ex);
+        //            Console.ReadKey();
+        //        }
+        //    }
+        //}
     }
 }
